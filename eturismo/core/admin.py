@@ -17,8 +17,8 @@ from .models import Tipo_Contato
 from .models import Contato
 
 class AdministradorAdimin(admin.ModelAdmin):
-	list_display = ['nome', 'login']
-	search_fields = ['nome', 'login']
+	list_display = ['nome', 'cpf', 'login']
+	search_fields = ['nome', 'cpf', 'login']
 
 class EstadoAdimin(admin.ModelAdmin):
 	list_display = ['descricao']

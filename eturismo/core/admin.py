@@ -19,6 +19,7 @@ from .models import Contato
 class AdministradorAdimin(admin.ModelAdmin):
 	list_display = ['nome', 'login']
 	search_fields = ['nome', 'login']
+	list_filter = ['Administrador']
 
 admin.site.register(Administrador, AdministradorAdimin)
 admin.site.register(Tipo_Passeio)

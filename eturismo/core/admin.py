@@ -17,15 +17,30 @@ from .models import Tipo_Contato
 from .models import Contato
 
 class AdministradorAdimin(admin.ModelAdmin):
-	list_display = ['nome', 'login']
-	search_fields = ['nome', 'login']
+	list_display = ['nome', 'cpf', 'login']
+	search_fields = ['nome', 'cpf', 'login']
+
+class EstadoAdimin(admin.ModelAdmin):
+	list_display = ['descricao']
+	search_fields = ['descricao']
+	list_filter= ['descricao']
+
+class MunicipioAdimin(admin.ModelAdmin):
+	list_display = ['descricao', 'Estado']
+	search_fields = ['descricao', 'Estado']
+	list_filter= ['descricao', 'Estado']
+
+class DistritoAdimin(admin.ModelAdmin):
+	list_display = ['descricao', 'Municipio']
+	search_fields = ['descricao', 'Municipio']
+	list_filter= ['descricao', 'Municipio']
 
 admin.site.register(Administrador, AdministradorAdimin)
 admin.site.register(Tipo_Passeio)
 admin.site.register(Empresa)
-admin.site.register(Municipio)
-admin.site.register(Estado)
-admin.site.register(Distrito)
+admin.site.register(Municipio, MunicipioAdimin)
+admin.site.register(Estado, EstadoAdimin)
+admin.site.register(Distrito, DistritoAdimin)
 admin.site.register(Tipo_Dica)
 admin.site.register(Tipo_Filtro)
 admin.site.register(Dica)

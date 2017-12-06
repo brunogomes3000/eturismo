@@ -1,1 +1,7 @@
-<h1> Eita </h1>
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+Lista de destinos | {{ block.super }}
+{% endblock %}

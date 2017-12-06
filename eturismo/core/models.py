@@ -107,3 +107,10 @@ class Contato(models.Model):
 	Tipo_Contato = models.ForeignKey(Tipo_Contato, on_delete=models.CASCADE)	
 	def __str__(self):
 		return self.descricao
+
+class Avaliacao(models.Model):
+	nota = models.CharField('Nota', max_length=2)
+	descricao = models.CharField('Descrição', max_length=300)
+	def __str__(self):
+		return self.nota
+		

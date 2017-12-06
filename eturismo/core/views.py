@@ -10,14 +10,10 @@ def informacoes(request):
 	# pesquisar com GET o destino
 	# enviar para a página informações o objetco recuperado via context
 
-
 	return render(request, 'informacoes.html')
 
-<<<<<<< HEAD
-=======
 def lista_destinos(request):
-	return render(request, 'lista_destinos.html')
->>>>>>> fce496074ef00f620c5b0254fcc02ec50258094f
+	return render(request, 'lista_destinos')
 # Create your views here.
 
 

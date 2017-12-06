@@ -7,6 +7,9 @@ def index(request):
 
 def informacoes(request):
 	return render(request, 'informacoes.html')
+
+def lista_destinos(request):
+	return render(request, 'lista_destinos.html')
 # Create your views here.
 
 

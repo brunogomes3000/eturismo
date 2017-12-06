@@ -36,9 +36,9 @@ class DistritoAdimin(admin.ModelAdmin):
 	list_filter= ['descricao', 'Municipio']
 
 class PromocaoAdmin(admin.ModelAdmin):
-	list_display = ['imagem', 'link', 'Empresa']
-	search_fields = ['imagem', 'link', 'Empresa']
-	list_filter = ['imagem', 'link', 'Empresa']
+	list_display = [ 'link', 'Empresa']
+	search_fields = [ 'link', 'Empresa']
+	list_filter = [ 'link', 'Empresa']
 
 admin.site.register(Administrador, AdministradorAdimin)
 admin.site.register(Tipo_Passeio)

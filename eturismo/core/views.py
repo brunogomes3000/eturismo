@@ -13,6 +13,11 @@ def informacoes(request):
 
 	return render(request, 'informacoes.html')
 
+<<<<<<< HEAD
+=======
+def lista_destinos(request):
+	return render(request, 'lista_destinos.html')
+>>>>>>> fce496074ef00f620c5b0254fcc02ec50258094f
 # Create your views here.
 
 

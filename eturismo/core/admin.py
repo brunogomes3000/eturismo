@@ -20,6 +20,13 @@ class AdministradorAdimin(admin.ModelAdmin):
 	list_display = ['nome', 'login']
 	search_fields = ['nome', 'login']
 
+class PromocaoAdmin(admin.ModelAdmin):
+	list_display = ['imagem', 'link', 'Empresa']
+	search_fields = ['imagem', 'link', 'Empresa']
+	list_filter = ['imagem', 'link', 'Empresa']
+
+
+
 admin.site.register(Administrador, AdministradorAdimin)
 admin.site.register(Tipo_Passeio)
 admin.site.register(Empresa)
@@ -29,7 +36,7 @@ admin.site.register(Distrito)
 admin.site.register(Tipo_Dica)
 admin.site.register(Tipo_Filtro)
 admin.site.register(Dica)
-admin.site.register(Promocao)
+admin.site.register(Promocao, PromocaoAdmin)
 admin.site.register(Endereco)
 admin.site.register(Tipo_Contato)
 admin.site.register(Contato)

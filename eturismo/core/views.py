@@ -21,7 +21,10 @@ def lista_destinos(request):
 	return render(request, 'lista_destinos.html', context)
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1083128967874d53d28613c060d813f9df878872
 # Create your views here.
 
 

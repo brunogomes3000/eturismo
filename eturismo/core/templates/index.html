@@ -38,10 +38,12 @@
         
           <h2 class="subs-title text-center">Escolha um destino!!!</h2></br>
           <div class="subcription-info text-center">
-            <form class="subscribe_form" action="#" method="post">
-              <input required="" value="" placeholder="Digite o destino..." class="email" id="email" name="email" type="email">
-             <a href="{% url 'lista_destinos' %}"> <input class="subscribe"   name="email" value="Ir!" type="submit"> </a>
-            </form></br>
+            <form class="subscribe_form" action="{% url 'lista_destinos' %}" method="get">
+              <input required placeholder="Digite o destino..."  name="destino" type="text" />
+             <input class="subscribe" value="Ir!" type="submit" />
+            </form>
+
+            </br>
             <p class="sub-p"> <a href="#">Deseja usar localização atual?</a> </p>
           </div>
         </div>

@@ -80,7 +80,7 @@ class Passeios(models.Model):
 		return self.descricao
 '''
 class Promocao(models.Model):
-	imagem = models.CharField("Imagem", max_length=121)
+	imagem_perfil= models.ImageField(upload_to='imagens/perfil', verbose_name='Imagem', default='imagens/perfil/noperfil.png', null=True, blank=True)
 	link = models.CharField("Link", max_length=100)
 	Empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
 	def __str__(self):
@@ -107,3 +107,10 @@ class Contato(models.Model):
 	Tipo_Contato = models.ForeignKey(Tipo_Contato, on_delete=models.CASCADE)	
 	def __str__(self):
 		return self.descricao
+
+class Avaliacao(models.Model):
+	nota = models.CharField('Nota', max_length=2)
+	descricao = models.CharField('Descrição', max_length=300)
+	def __str__(self):
+		return self.nota
+		

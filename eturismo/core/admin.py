@@ -15,6 +15,7 @@ from .models import Promocao
 from .models import Endereco
 from .models import Tipo_Contato
 from .models import Contato
+from .models import Avaliacao
 
 class AdministradorAdimin(admin.ModelAdmin):
 	list_display = ['nome', 'cpf', 'login']
@@ -40,6 +41,11 @@ class PromocaoAdmin(admin.ModelAdmin):
 	search_fields = [ 'link', 'Empresa']
 	list_filter = [ 'link', 'Empresa']
 
+class AvaliacaoAdmin(admin.ModelAdmin):
+	list_display = [ 'nota', 'descricao']
+	search_fields = [ 'nota', 'descricao']
+	list_filter= [ 'nota', 'descricao']
+
 admin.site.register(Administrador, AdministradorAdimin)
 admin.site.register(Tipo_Passeio)
 admin.site.register(Empresa)
@@ -53,3 +59,5 @@ admin.site.register(Promocao, PromocaoAdmin)
 admin.site.register(Endereco)
 admin.site.register(Tipo_Contato)
 admin.site.register(Contato)
+admin.site.register(Avaliacao, AvaliacaoAdmin)
+

@@ -33,7 +33,6 @@ def lista_destinos(request):
 	context = {
 		'distritos': distritos,
 		'municipios' : municipios,
-		'destinos' : destinos,
 		#'nome': nome
 	}
 	return render(request, 'lista_destinos.html', context)

@@ -69,8 +69,8 @@ class Dica(models.Model):
 	def __str__(self):
 		return self.descricao
 
-'''
-class Passeios(models.Model):
+
+class Passeio(models.Model):
 	localizacao = models.CharField('Localização', max_length=250)
 	descricao = models.CharField("Descrição", max_length=500)
 	Tipo_Passeio = models.ForeignKey(Tipo_Passeio, on_delete=models.CASCADE)
@@ -78,7 +78,7 @@ class Passeios(models.Model):
 	Municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
 	def __str__(self):
 		return self.descricao
-'''
+
 class Promocao(models.Model):
 	imagem_perfil= models.ImageField(upload_to='imagens/perfil', verbose_name='Imagem', default='imagens/perfil/noperfil.png', null=True, blank=True)
 	link = models.CharField("Link", max_length=100)

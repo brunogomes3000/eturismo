@@ -18,11 +18,14 @@ from django.contrib import admin
 from core.views import index
 from core.views import informacoes
 from core.views import lista_destinos
+from core.views import passeio_detalhes
+
 
 urlpatterns = [
 	url(r'^$', index, name="index"),
 	url(r'^informacoes', informacoes, name="informacoes" ), 
     url(r'^lista_destinos',lista_destinos, name="lista_destinos"),
+    url(r'^passeio_detalhes',passeio_detalhes, name="passeio_detalhes"),
     url(r'^admin/', admin.site.urls),
 
 

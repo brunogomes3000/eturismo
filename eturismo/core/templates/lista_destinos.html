@@ -15,16 +15,39 @@ Lista de destinos | {{ block.super }}
 
 
 
-
+</br>
+</br>
+</br>
 
 <h1>Lista de Destinos</h1>
-<hr>
+<hr/>
 
+<form method="get" action="{% url 'lista_destinos' %}">
+<h3><b>Filtro de Busca:</b></h3>
+Descrição: <input type="text" name="destinoget" /> 
+
+Municipio: <select name="municipioget">
+
+{% for pub in municipios %}
+<option value="{{pub.id}}">{{pub.descricao}}</option>
+{% endfor %}
+
+
+<option value=""></option>
+</select> 
+<option value=""></option>
+</select> 
+​<button type="submit">Buscar</button></p>​
+</form>
+<hr/>
+
+<h3><b>Seu resultado de busca:</b></h3>
 <h3><b>Distritos</b></h3>
+
 <ul>
 
 {% for dist in distritos %}
-<li>{{dist.descricao}}</li>
+<li><a href="{% url 'informacoes' %}"> {{dist.descricao}} </a></li>
 {% endfor %}
 
 </ul>

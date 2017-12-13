@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+Lista de destinos | {{ block.super }}
+{% endblock %}
+
+{% block conteudo%}
+
+<div class="container">
+​<div class="row mt">
+
+<div class="col-lg-8">
+
+
+
+
+
+<h1>Lista de Destinos</h1>
+<hr>
+
+<h3><b>Distritos</b></h3>
+<ul>
+
+{% for dist in distritos %}
+<li>{{dist.descricao}}</li>
+{% endfor %}
+
+</ul>
+
+ {% endblock %}

@@ -74,7 +74,9 @@ def lista_destinos(request):
 	}
 	return render(request, 'lista_destinos.html', context)
 
+def passeio_detalhes(request):
 
+	return render(request, 'passeio_detalhes.html')
 # Create your views here.
 
 

@@ -23,7 +23,7 @@ urlpatterns = [
 	url(r'^$', index, name="index"),
 	url(r'^informacoes', informacoes, name="informacoes" ), 
     url(r'^lista_destinos',lista_destinos, name="lista_destinos"),
-    url(r'^admin/', admin.site.urls ),
+    url(r'^admin/', admin.site.urls),
 
 
 ]

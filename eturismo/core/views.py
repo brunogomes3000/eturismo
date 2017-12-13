@@ -14,6 +14,7 @@ def informacoes(request):
 def lista_destinos(request):
 	distritos = Distrito.objects.all()
 	municipios = Municipio.objects.all()
+	
 
 	if request.method == 'GET':
 		if 'destinoget' in request.GET:
@@ -29,10 +30,11 @@ def lista_destinos(request):
 	else:
 		destinos = Distrito.objects.all()
 
-
+	
 	context = {
 		'distritos': distritos,
 		'municipios' : municipios,
+		
 		#'nome': nome
 	}
 	return render(request, 'lista_destinos.html', context)

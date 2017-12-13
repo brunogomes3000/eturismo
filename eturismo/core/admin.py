@@ -47,19 +47,19 @@ class AvaliacaoAdmin(admin.ModelAdmin):
 	search_fields = [ 'nota', 'descricao']
 	list_filter= [ 'nota', 'descricao']
 
-<<<<<<< HEAD
+
 class PromocaoAdmin(admin.ModelAdmin):
-	list_display = ['imagem', 'link', 'Empresa']
-	search_fields = ['imagem', 'link', 'Empresa']
-	list_filter = ['imagem', 'link', 'Empresa']
+	list_display = [ 'link', 'Empresa']
+	search_fields = [ 'link', 'Empresa']
+	list_filter = ['link', 'Empresa']
 
 
-=======
+
 class PasseioAdmin(admin.ModelAdmin):
 	list_display = [ 'localizacao', 'descricao']
 	search_fields = [ 'localizacao', 'descricao']
 	list_filter= [ 'localizacao', 'descricao']
->>>>>>> fab2ab3f4343bb3c6c2691e93fc403fb61c95811
+
 
 admin.site.register(Administrador, AdministradorAdimin)
 admin.site.register(Tipo_Passeio)

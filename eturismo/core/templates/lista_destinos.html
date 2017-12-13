@@ -21,9 +21,9 @@ Lista de destinos | {{ block.super }}
 
 <h1>Lista de Destinos</h1>
 <hr/>
-<hr/>
+
 <form method="get" action="{% url 'lista_destinos' %}">
-<p>
+<h3><b>Filtro de Busca:</b></h3>
 Descrição: <input type="text" name="destinoget" /> 
 
 Municipio: <select name="municipioget">
@@ -40,18 +40,13 @@ Municipio: <select name="municipioget">
 </form>
 <hr/>
 
-
-
-<<<<<<< HEAD
 <h3><b>Seu resultado de busca:</b></h3>
-=======
 <h3><b>Distritos</b></h3>
 
->>>>>>> e42bba57b42a7c627fefc1404a75c50e146ffcdf
 <ul>
 
 {% for dist in distritos %}
-<li>{{dist.descricao}}</li>
+<li><a href="{% url 'informacoes' %}"> {{dist.descricao}} </a></li>
 {% endfor %}
 
 </ul>

@@ -30,6 +30,9 @@ Municipio: <select name="municipioget">
 
 {% for pub in municipios %}
 <option value="{{pub.id}}">{{pub.descricao}}</option>
+
+
+
 {% endfor %}
 
 
@@ -47,7 +50,11 @@ Municipio: <select name="municipioget">
 <ul>
 
 {% for dist in distritos %}
-<li><a href="{% url 'informacoes' %}"> {{dist.descricao}} </a></li>
+<li><a href="{% url 'informacoes' %}?id={{dist.id}}"> {{dist.descricao}} </a></li>
+
+{% empty %}
+<p>Nenhum resultado encontrado</p>
+
 {% endfor %}
 
 </ul>

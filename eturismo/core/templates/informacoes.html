@@ -50,10 +50,17 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1 id="destino" >Venha turistar!</h1>
-                <p>A barra tem uma praia</p>
-                <p>Veja informações <code>Acesse informações tudo sobre seu destino</code>.</p>
+                <h1 id="destino" >{{distrito.descricao}}</h1>
+                <p></p>
+                
+                {% for dica in dicas %}
+                <p>{{dica.descricao}}</p>
+                {% empty %}
+                <p>Nenhum resultado encontrado</p>
+                {% endfor %}
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Acesse mais detalhes!</a>
+
+
             </div>
         </div>
         <!-- /#page-content-wrapper -->
@@ -61,6 +68,14 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <h1 id="lugares">Passseios</h1>
+                {% for passeios in passeio %}
+                <p>{{passeio.descricao}}</p>
+                {% empty %}
+                <p>Nenhum resultado encontrado</p>
+                {% endfor %}
+
+
+
                 <a href= "{% url 'passeio_detalhes' %}"> Acesse </a>
                 
             </div>
@@ -69,7 +84,11 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <h1 id="promocoes" >Promoção</h1>
-                <p>A barra tem uma praia</p>
+                {% for promocoes in promocao %}
+                <p>{{promocao.descricao}}</p>
+                {% empty %}
+                <p>Nenhum resultado encontrado</p>
+                {% endfor %}
                 
             </div>
         </div>
@@ -77,7 +96,11 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <h1 id="avaliacao">Avaliação</h1>
-                <p>Formulário de avaliação</p>
+                {% for avaliacoes in avaliacao %}
+                <p>{{avaliacao.descricao}}</p>
+                {% empty %}
+                <p>Nenhum resultado encontrado</p>
+                {% endfor %}
                 
             </div>
         </div>

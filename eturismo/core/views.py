@@ -7,6 +7,9 @@ from .models import Dica
 from .models import Passeio
 from .models import Promocao
 from .models import Avaliacao
+from .models import Tipo_Passeio
+from .models import Empresa
+
 
 def index(request):
 	return render(request, 'index.html')
@@ -60,4 +63,11 @@ def lista_destinos(request):
 	return render(request, 'lista_destinos.html', context)
 
 def passeio_detalhes(request):
-	pass
+	passeio = Passeio.objects.all()
+	empresa = Empresa.objects.all()
+	
+	context = {
+		'passeio': passeio,
+		'empresa': empresa,
+	}
+	return render(request, 'passeio_detalhes.html', context)

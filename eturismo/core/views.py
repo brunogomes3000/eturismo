@@ -76,3 +76,6 @@ def lista_destinos(request):
 
 def passeio_detalhes(request):
 	pass
+
+def comentario (request):
+	return render(request, 'comentario.html')

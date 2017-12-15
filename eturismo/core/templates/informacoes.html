@@ -51,13 +51,16 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <h1 id="destino" >{{distrito.descricao}}</h1>
-                <p></p>
-                
+                <h2 id="destino" >{{distrito.Municipio}}</h2>
+
                 {% for dica in dicas %}
                 <p>{{dica.descricao}}</p>
                 {% empty %}
-                <p>Nenhum resultado encontrado</p>
+                <p>Nenhuma dica cadastrada.</p>
                 {% endfor %}
+
+
+
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Acesse mais detalhes!</a>
 
 
@@ -67,27 +70,33 @@
 
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1 id="lugares">Passseios</h1>
-                {% for passeios in passeio %}
-                <p>{{passeio.descricao}}</p>
+                <h1 id="lugares">Passeios</h1>
+
+                <ul>
+
+                {% for pas in passeios %}
+                <li><p>{{pas.descricao}}</p>
+                <a href= "{% url 'passeio_detalhes' %}?id={{pas.id}}"> Acesse </a></li>
                 {% empty %}
-                <p>Nenhum resultado encontrado</p>
-                {% endfor %}
+                <p>Nenhum passeio cadastrado</p>
+                {% endfor %} 
+
+                </ul>
 
 
-
-                <a href= "{% url 'passeio_detalhes' %}"> Acesse </a>
+                
                 
             </div>
         </div>
 
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1 id="promocoes" >Promoção</h1>
-                {% for promocoes in promocao %}
-                <p>{{promocao.descricao}}</p>
+
+                <h1 id="promocoes" >Promoções</h1>
+                {% for promo in promocoes %}
+                <p>{{promo.descricao}}</p>
                 {% empty %}
-                <p>Nenhum resultado encontrado</p>
+                <p>Nenhuma promoção cadastrada.</p>
                 {% endfor %}
                 
             </div>
@@ -95,9 +104,10 @@
 
         <div id="page-content-wrapper">
             <div class="container-fluid">
+
                 <h1 id="avaliacao">Avaliação</h1>
-                {% for avaliacoes in avaliacao %}
-                <p>{{avaliacao.descricao}}</p>
+                {% for aval in avaliacoes %}
+                <p>{{aval.descricao}}</p>
                 {% empty %}
                 <p>Nenhum resultado encontrado</p>
                 {% endfor %}

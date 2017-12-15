@@ -14,20 +14,24 @@ def index(request):
 def informacoes(request):
 	id_distrito = request.GET.get("id")
 	
-	distrito = Distrito.objects.get(id=id_distrito)
-	'''municipios = Municipio.objects.filter(Municipio__id__in=distrito.Municipio.id)'''
 
-	dicas = Dica.objects.filter(Distrito__id__in=id_distrito)
+	distrito = Distrito.objects.get(id=id_distrito)
 	passeios = Passeio.objects.filter(Distrito__id__in=id_distrito)
+	#municipios = Municipio.objects.get(Distrito__id__in=id_distrito)
+
+	#passeio = Passeio.objects.filter(Distrito__id__in=id_distrito)
+	dicas = Dica.objects.filter(Distrito__id__in=id_distrito)
 	promocoes = Promocao.objects.filter(Distrito__id__in=id_distrito)
 	avaliacoes = Avaliacao.objects.filter(Distrito__id__in=id_distrito)
 	
 	context = {
+
 		'distrito': distrito,
 		'dicas': dicas,
 		'passeios': passeios,
 		'promocoes': promocoes,
-		'avaliacoes': avaliacoes
+		'avaliacoes': avaliacoes,
+		
 	}
 	return render(request, 'informacoes.html', context)
 
@@ -60,4 +64,15 @@ def lista_destinos(request):
 	return render(request, 'lista_destinos.html', context)
 
 def passeio_detalhes(request):
-	pass
+
+	id_passeio = request.GET.get("id")
+	passeios = Passeio.objects.get(id=id_passeio)
+
+	context = {
+		'passeios': passeios
+
+
+	}
+
+
+	return render(request, 'passeio_detalhes.html', context)

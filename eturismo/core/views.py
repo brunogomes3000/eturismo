@@ -66,8 +66,27 @@ def passeio_detalhes(request):
 	passeio = Passeio.objects.all()
 	empresa = Empresa.objects.all()
 	
+	if request.method == 'GET':
+	if 'nomeget' in request.GET: nomeget=request.GET.get("nomeget")
+		else:
+		nomeget=""
+
+	if 'passeioget' in request.GET and request.GET.get("passeioget")!="":passeioget=request.GET.get("passeioget")
+	
+		else:
+		publicoget=Publico.objects.values_list('id')
+	
+	if 'empresaget' in request.GET and request.GET.get("empresaget")!="": empresaget=request.GET.get("empresaget")
+		empresaget=request.GET.get("empresaget")
+		else:
+			empresaget=Empresa.objects.values_list('id')
+			passeio = Passeio.objects.filter(nome__icontains=nomeget, area__id__in=empresaget, passeio__id__in=passeioget).distinct()
+		else:
+		passeio = Passeio.objects.all()
+
 	context = {
 		'passeio': passeio,
 		'empresa': empresa,
 	}
+
 	return render(request, 'passeio_detalhes.html', context)

@@ -7,6 +7,9 @@ from .models import Dica
 from .models import Passeio
 from .models import Promocao
 from .models import Avaliacao
+from .models import Tipo_Passeio
+from .models import Empresa
+
 
 def index(request):
 	return render(request, 'index.html')

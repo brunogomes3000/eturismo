@@ -6,9 +6,38 @@ Detalhes do Passeio | {{ block.super }}
 {% endblock %}
 
 {% block conteudo%}
+
+
+
+
+
 </br>
 </br>
 <h1>Detalhes dos Passeios</h1>
+<hr/>
+
+<form method="get" action=" {% url 'passeio_detalhes' %}">
+	<p>Filtros --
+
+	Nome: <input type="text" name="nomeget" /> |
+​
+​	Passeio: <select name="passeioget">
+	<option value=""></option> 
+	{% for pub in passeio %}
+	<option value="{{passeio.id}}">{{passeio.descricao}}</option>
+	{% endfor %}
+	</select> |
+
+	Empresa: <select name="empresaget">
+	<option value=""> </option>
+	{% for bup in empresa %}
+	<option value="{{empresa.id}}">{{empresa.descricao}}</option>
+	{% endfor %}
+	</select> |
+	
+	<button type="submit">Buscar</button></p>
+</form>
+
 <hr/>
 <h3>Descrição</h3> 
 <p>{{passeios.descricao}}</p>
@@ -22,8 +51,6 @@ Detalhes do Passeio | {{ block.super }}
 
 <h3>Empresa</h3>  
 <p>{{passeios.Empresa}}</p>
-
-
 
 
  {% endblock %}

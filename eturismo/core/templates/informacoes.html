@@ -50,34 +50,97 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1 id="destino" >Venha turistar!</h1>
-                <p>A barra tem uma praia</p>
-                <p>Veja informações <code>Acesse informações tudo sobre seu destino</code>.</p>
+                <h1 id="destino" >{{distrito.descricao}}</h1>
+                <h2 id="destino" >{{distrito.Municipio}}</h2>
+
+                {% for dica in dicas %}
+                <p>{{dica.descricao}}</p>
+                {% empty %}
+                <p>Nenhuma dica cadastrada.</p>
+                {% endfor %}
+
+
+
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Acesse mais detalhes!</a>
+
+
             </div>
         </div>
         <!-- /#page-content-wrapper -->
 
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1 id="lugares">Passseios</h1>
-                <a href= "{% url 'passeio_detalhes' %}"> Acesse </a>
+                <h1 id="lugares">Passeios</h1>
+
+                <ul>
+
+                {% for pas in passeios %}
+                <li><p>{{pas.descricao}}</p>
+                <a href= "{% url 'passeio_detalhes' %}?id={{pas.id}}"> Acesse </a></li>
+                {% empty %}
+                <p>Nenhum passeio cadastrado</p>
+                {% endfor %} 
+
+                </ul>
+
+
+                
                 
             </div>
         </div>
 
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1 id="promocoes" >Promoção</h1>
-                <p>A barra tem uma praia</p>
+
+                <h1 id="promocoes" >Promoções</h1>
+                {% for promo in promocoes %}
+                <p>{{promo.descricao}}</p>
+                {% empty %}
+                <p>Nenhuma promoção cadastrada.</p>
+                {% endfor %}
                 
             </div>
         </div>
 
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1 id="avaliacao">Avaliação</h1>
-                <p>Formulário de avaliação</p>
+
+                <h1 id="Avaliacao">Avaliação</h1>
+
+                
+                <h7 class="centered"> Comente aqui:</h7><br/>
+                <div class="container">
+                <div class="row mt">
+                <form action="" method="post">
+                {% csrf_token %}
+
+        <table background="hey.png" width="200" height="50">
+            <td>
+                <form action="Avaliacao" method="post"> 
+        
+                <font face="tahoma" size="1"><h5>Nota</h5></font>
+                <input tupe="text" name="nota">
+                </br>
+                <br>
+                    <textarea name="Enviar comentários" id="comentarios" rows="10" cols="40" maxlength="100"></textarea>
+                <br>
+                <br>
+                <p><input type="submit" value="Enviar comentário" /></p>
+                </form>
+                </td>
+        </table>
+         </br>
+                </form>
+                </div>
+                </div>
+
+
+
+                <!--{% for aval in avaliacoes %}
+                <p>{{aval.descricao}}</p>
+                {% empty %}
+                <p>Nenhum resultado encontrado</p>
+                {% endfor %} -->
                 
             </div>
         </div>

@@ -75,7 +75,7 @@ class Passeio(models.Model):
 	descricao = models.CharField("Descrição", max_length=500)
 	Tipo_Passeio = models.ForeignKey(Tipo_Passeio, on_delete=models.CASCADE)
 	Empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
-	Municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
+	Distrito = models.ForeignKey(Distrito, on_delete=models.CASCADE)
 	def __str__(self):
 		return self.descricao
 
@@ -83,6 +83,7 @@ class Promocao(models.Model):
 	imagem_perfil= models.ImageField(upload_to='imagens/perfil', verbose_name='Imagem', default='imagens/perfil/noperfil.png', null=True, blank=True)
 	link = models.CharField("Link", max_length=100)
 	Empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
+	Distrito = models.ForeignKey(Distrito, on_delete=models.CASCADE)
 	def __str__(self):
 		return self.link
 
@@ -111,6 +112,8 @@ class Contato(models.Model):
 class Avaliacao(models.Model):
 	nota = models.CharField('Nota', max_length=2)
 	descricao = models.CharField('Descrição', max_length=300)
+	Distrito = models.ForeignKey(Distrito, on_delete=models.CASCADE)
+
 	def __str__(self):
-		return self.nota
+		return self.descricao
 		

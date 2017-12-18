@@ -94,7 +94,10 @@
 
                 <h1 id="promocoes" >Promoções</h1>
                 {% for promo in promocoes %}
-                <p>{{promo.descricao}}</p>
+                <img src=" {{promo.imagem_perfil.url}} " alt="">
+                <p></p>
+                <p>{{promo.link}}</p>
+                </div>
                 {% empty %}
                 <p>Nenhuma promoção cadastrada.</p>
                 {% endfor %}

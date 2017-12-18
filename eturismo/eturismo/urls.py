@@ -19,14 +19,20 @@ from core.views import index
 from core.views import informacoes
 from core.views import lista_destinos
 from core.views import passeio_detalhes
+from django.conf import settings
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
+
 	url(r'^$', index, name="index"),
 	url(r'^informacoes', informacoes, name="informacoes" ), 
     url(r'^lista_destinos',lista_destinos, name="lista_destinos"),
-    url(r'^passeio_detalhes',passeio_detalhes, name="passeio_detalhes"),
+    url(r'^passeio_detalhes',passeio_detalhes, name="passeio_detalhes"),   
     url(r'^admin/', admin.site.urls),
 
-
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

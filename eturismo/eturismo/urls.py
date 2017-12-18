@@ -25,13 +25,21 @@ from django.conf.urls.static import static
 
 
 
+
 urlpatterns = [
 
 	url(r'^$', index, name="index"),
 	url(r'^informacoes', informacoes, name="informacoes" ), 
     url(r'^lista_destinos',lista_destinos, name="lista_destinos"),
+<<<<<<< HEAD
     url(r'^passeio_detalhes',passeio_detalhes, name="passeio_detalhes"),   
     url(r'^admin/', admin.site.urls),
+=======
+    url(r'^passeio_detalhes',passeio_detalhes, name="passeio_detalhes"),
+    
+    url(r'^admin/', admin.site.urls),
+    
+>>>>>>> 3493ba6033461d148329acc0296b14f9cee593f9
 
 ]
 

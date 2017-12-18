@@ -9,6 +9,7 @@ from .models import Promocao
 from .models import Avaliacao
 from .models import Tipo_Passeio
 from .models import Empresa
+from django.contrib.auth.forms import UserCreationForm
 
 
 def index(request):
@@ -16,6 +17,7 @@ def index(request):
 
 def informacoes(request):
 	id_distrito = request.GET.get("id")
+	form = UserCreationForm(request.POST or None)
 	
 
 	distrito = Distrito.objects.get(id=id_distrito)
@@ -34,8 +36,13 @@ def informacoes(request):
 		'passeios': passeios,
 		'promocoes': promocoes,
 		'avaliacoes': avaliacoes,
+		'form': form
+	
 		
 	}
+	if request.method == 'POST':
+		if form.is_valid():
+			form.save()
 	return render(request, 'informacoes.html', context)
 
 def lista_destinos(request):
@@ -67,15 +74,16 @@ def lista_destinos(request):
 	return render(request, 'lista_destinos.html', context)
 
 def passeio_detalhes(request):
-
 	id_passeio = request.GET.get("id")
 	passeios = Passeio.objects.get(id=id_passeio)
-
+	
 	context = {
 		'passeios': passeios
 
-
 	}
 
-
 	return render(request, 'passeio_detalhes.html', context)
+
+
+	
+	

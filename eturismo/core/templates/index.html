@@ -38,7 +38,7 @@
         
           <h2 class="subs-title text-center">Escolha um destino!!!</h2></br>
           <div class="subcription-info text-center">
-            <form class="subscribe_form" action="{% url 'lista_destinos' %}" method="get">
+            <form class="subscribe_form" name="destinoget" action="{% url 'lista_destinos' %}" method="get">
               <input required placeholder="Digite o destino..."  name="destino" type="text" />
              <input class="subscribe" value="Ir!" type="submit" />
             </form>

@@ -17,12 +17,12 @@ def index(request):
 
 def informacoes(request):
 	id_distrito = request.GET.get("id")
-
+	distrito = Distrito.objects.get(id=id_distrito)
 	tipo_passeio = Tipo_Passeio.objects.all()
 
 	form = UserCreationForm(request.POST or None)
 	
-	distrito = Distrito.objects.get(id=id_distrito)
+	
 	passeios = Passeio.objects.filter(Distrito__id__in=id_distrito)
 	#municipios = Municipio.objects.get(Distrito__id__in=id_distrito)
 
@@ -45,7 +45,7 @@ def informacoes(request):
 	
 	else:
 		passeio = Tipo_Passeio.objects.all()
-		distrito = Distrito.objects.all()	
+		
 	context = {
 
 		'distrito': distrito,

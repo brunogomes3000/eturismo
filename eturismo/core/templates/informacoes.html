@@ -108,7 +108,10 @@
 
                 <h1 id="promocoes" >Promoções</h1>
                 {% for promo in promocoes %}
-                <p>{{promo.descricao}}</p>
+                <img src=" {{promo.imagem_perfil.url}} " alt="">
+                <p></p>
+                <p>{{promo.link}}</p>
+                </div>
                 {% empty %}
                 <p>Nenhuma promoção cadastrada.</p>
                 {% endfor %}
@@ -119,12 +122,42 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
 
-                <h1 id="avaliacao">Avaliação</h1>
-                {% for aval in avaliacoes %}
+                <h1 id="Avaliacao">Avaliação</h1>
+
+                
+                <h7 class="centered"> Comente aqui:</h7><br/>
+                <div class="container">
+                <div class="row mt">
+                <form action="" method="post">
+                {% csrf_token %}
+
+        <table background="hey.png" width="200" height="50">
+            <td>
+                <form action="Avaliacao" method="post"> 
+        
+                <font face="tahoma" size="1"><h5>Nota</h5></font>
+                <input tupe="text" name="nota">
+                </br>
+                <br>
+                    <textarea name="Enviar comentários" id="comentarios" rows="10" cols="40" maxlength="100"></textarea>
+                <br>
+                <br>
+                <p><input type="submit" value="Enviar comentário" /></p>
+                </form>
+                </td>
+        </table>
+         </br>
+                </form>
+                </div>
+                </div>
+
+
+
+                <!--{% for aval in avaliacoes %}
                 <p>{{aval.descricao}}</p>
                 {% empty %}
                 <p>Nenhum resultado encontrado</p>
-                {% endfor %}
+                {% endfor %} -->
                 
             </div>
         </div>

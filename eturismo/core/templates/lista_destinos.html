@@ -52,6 +52,7 @@ Municipio: <select name="municipioget">
 {% for dist in distritos %}
 <li><a href="{% url 'informacoes' %}?id={{dist.id}}"> {{dist.descricao}} </a></li>
  <input type="hidden" name="id" value="{{distrito.id}}" />
+
 {% empty %}
 <p>Nenhum resultado encontrado</p>
 {% endfor %}

@@ -65,9 +65,14 @@ def informacoes(request):
 	return render(request, 'informacoes.html', context)
 
 def lista_destinos(request):
-	distritos = Distrito.objects.all()
+	#distritos = Distrito.objects.all()
+
+	#distritos = Distrito.objects.filter(descricao__icontains=destinoget)
+
 	municipios = Municipio.objects.all()
-	
+	'''id_destino = request.GET.get("id")
+	distritos = Distrito.objects.get(id=id_destino)
+	municipios = Municipio.objects.get(id=id_destino)'''
 
 	if request.method == 'GET':
 		if 'destinoget' in request.GET:
@@ -79,11 +84,12 @@ def lista_destinos(request):
 			destinoget=request.GET.get("destinoget")
 		else:
 			destinoget=Distrito.objects.values_list('id')
-
+		distritos = Distrito.objects.filter(descricao__icontains=destinoget).distinct()
 	else:
 		destinos = Distrito.objects.all()
 
 	
+
 	context = {
 		'distritos': distritos,
 		'municipios' : municipios,

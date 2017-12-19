@@ -49,10 +49,15 @@ class AvaliacaoAdmin(admin.ModelAdmin):
 
 
 class PromocaoAdmin(admin.ModelAdmin):
-	list_display = ['imagem', 'link', 'Empresa']
-	search_fields = ['imagem', 'link', 'Empresa']
-	list_filter = ['imagem', 'link', 'Empresa']
+	list_display = [ 'link', 'Empresa']
+	search_fields = [ 'link', 'Empresa']
+	list_filter = [ 'link', 'Empresa']
 
+
+class PromocaoAdmin(admin.ModelAdmin):
+	list_display = [ 'link', 'Empresa']
+	search_fields = [ 'link', 'Empresa']
+	list_filter = ['link', 'Empresa']
 
 
 class PasseioAdmin(admin.ModelAdmin):

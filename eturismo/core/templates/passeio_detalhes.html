@@ -6,10 +6,23 @@ Detalhes do Passeio | {{ block.super }}
 {% endblock %}
 
 {% block conteudo%}
+
 </br>
 </br>
 <h1>Detalhes dos Passeios</h1>
 <hr/>
 
+<hr/>
+<h3>Descrição</h3> 
+<p>{{passeio.descricao}}</p>
+
+<h3>Localização</h3> 
+ <p>{{passeio.localizacao}}</p>
+
+<h3>Tipo do Passeio</h3> 
+<p>{{passeio.Tipo_Passeio}}</p>
+
+<h3>Empresa</h3>  
+<p>{{passeio.Empresa}}</p>
 
  {% endblock %}

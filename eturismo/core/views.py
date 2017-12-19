@@ -3,48 +3,65 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Distrito
 from .models import Municipio
+from .models import Dica
+from .models import Passeio
+from .models import Promocao
+from .models import Avaliacao
+from .models import Tipo_Passeio
+from .models import Empresa
+from django.contrib.auth.forms import UserCreationForm
+
 
 def index(request):
 	return render(request, 'index.html')
 
 def informacoes(request):
-	id_informacoes = request.GET.get("id")
+	id_distrito = request.GET.get("id")
+	distrito = Distrito.objects.get(id=id_distrito)
+	tipo_passeio = Tipo_Passeio.objects.all()
+
+	form = UserCreationForm(request.POST or None)
 	
-	id_municipioinfo = request.GET.get("id")
-	municipioinfo = Municipio.objects.get(id=id_municipioinfo)
+	
+	passeios = Passeio.objects.filter(Distrito__id__in=id_distrito)
+	#municipios = Municipio.objects.get(Distrito__id__in=id_distrito)
 
-	id_dicainfo = request.GET.get("id")
-	dicainfo = Dica.objects.get(id=id_dicainfo)
+	#passeio = Passeio.objects.filter(Distrito__id__in=id_distrito)
+	dicas = Dica.objects.filter(Distrito__id__in=id_distrito)
+	promocoes = Promocao.objects.filter(Distrito__id__in=id_distrito)
+	avaliacoes = Avaliacao.objects.filter(Distrito__id__in=id_distrito)
 
-	id_passeioinfo = request.GET.get("id")
-	passeioinfo = Passeio.objects.get(id=id_passeioinfo)
+	if request.method == 'GET':
+		if 'descricaoget' in request.GET:
+				descricaoget=request.GET.get("descricaoget")
+		else:
+			descricaoget=""
 
-	id_promocaoinfo = request.GET.get("id")
-	promocaoinfo = Promocao.objects.get(id=id_promocaoinfo)
-
-	id_avaliacaoinfo = request.GET.get("id")
-	avaliacaoinfo = Avaliacao.objects.get(id=id_avaliacaoinfo)
-
-	id_enderecoinfor = request.GET.get("id")
-	enderecoinfor = Endereco.objects.get(id=id_enderecoinfo)
-
-	id_contatoinfor = request.GET.get("id")
-	contatoinfor = Contato.objects.get(id=id_contatoinfo)
-
-	id_tipodicainfor = request.GET.get("id")
-	tipodicainfor = Tipo_Dica.objects.get(id=id_tipodicainfo)
-
+		if 'passeioget' in request.GET and request.GET.get("passeioget")!="": 
+			passeioget=request.GET.get("passeioget")
+		else:
+			passeioget=Tipo_Passeio.objects.values_list('id')
+			passeio = Tipo_Passeio.objects.filter(descricao__icontains=descricaoget, passeio__id__in=passeioget).distinct()
+	
+	else:
+		passeio = Tipo_Passeio.objects.all()
+		
 	context = {
-	'municipioinfo': municipioinfo,
-	'dicainfo': dicainfo,
-	'passeioinfo': passeioinfo,
-	'promocaoinfo': promocaoinfo,
-	'avaliacaoinfo': avaliacaoinfo,
-	'enderecoinfor': enderecoinfor,
-	'contatoinfor': contatoinfor,
-	'tipodicainfor': tipodicainfor,
-}
-	return render(request, 'informacoes.html')
+
+		'distrito': distrito,
+		'dicas': dicas,
+		'passeios': passeios,
+		'promocoes': promocoes,
+		'avaliacoes': avaliacoes,
+		'tipo_passeio' : tipo_passeio,
+		'form': form,	
+	}
+
+		
+	if request.method == 'POST':
+		if form.is_valid():
+			form.save()
+	return render(request, 'informacoes.html', context)
 
 def lista_destinos(request):
 	distritos = Distrito.objects.all()
@@ -75,8 +92,16 @@ def lista_destinos(request):
 	return render(request, 'lista_destinos.html', context)
 
 def passeio_detalhes(request):
+	id_passeio = request.GET.get("id")
+	passeio = Passeio.objects.get(id=id_passeio)
 
-	return render(request, 'passeio_detalhes.html')
-# Create your views here.
+	context = {
+		'passeio': passeio
+	
+		}
+
+	return render(request, 'passeio_detalhes.html', context)
 
 
+	
+	

@@ -39,7 +39,10 @@ urlpatterns = [
     
     url(r'^admin/', admin.site.urls),
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> 16ce423ef4ea34af3826e268eadff917fa4e7c36
 
 ]
 

@@ -109,7 +109,7 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
 
-                <h1 id="promocoes" >Promoções</h1>
+            <h1 id="promocoes" >Promoções</h1>
                 {% for promo in promocoes %}
                 <img src=" {{promo.imagem_perfil.url}} " alt="">
                 <p></p>
@@ -127,26 +127,18 @@
 
                 <h1 id="Avaliacao">Avaliação</h1>
 
+                 <a href= "{% url 'sucesso' %}"> Acesse </a></li>
                 
-                <h7 class="centered"> Comente aqui:</h7><br/>
-                <div class="container">
-                <div class="row mt">
-                <form action="{% url 'avaliacao' %}" method="post">
-                {% csrf_token %}
-
         <table background="hey.png" width="200" height="50">
             <td>
               
         
-                <font face="tahoma" size="1"><h5>Nota</h5></font>
-                <input tupe="text" name="nota">
+                
+               
                 </br>
                 <br>
-                <hidden value="{{distrito.id}}" id="id" name="id" />
-                    <textarea name="Enviar comentários" name="comentarios" id="comentarios" rows="10" cols="40" maxlength="100"></textarea>
-                <br>
-                <br>
-                <p><input type="submit" value="Enviar comentário" /></p>
+               
+                
              
                 </td>
         </table>

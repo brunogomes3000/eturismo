@@ -47,6 +47,7 @@ class AvaliacaoAdmin(admin.ModelAdmin):
 	search_fields = [ 'nota', 'descricao']
 	list_filter= [ 'nota', 'descricao']
 
+
 class PromocaoAdmin(admin.ModelAdmin):
 	list_display = [ 'link', 'Empresa']
 	search_fields = [ 'link', 'Empresa']
@@ -57,6 +58,7 @@ class PromocaoAdmin(admin.ModelAdmin):
 	list_display = [ 'link', 'Empresa']
 	search_fields = [ 'link', 'Empresa']
 	list_filter = ['link', 'Empresa']
+
 
 class PasseioAdmin(admin.ModelAdmin):
 	list_display = [ 'localizacao', 'descricao']

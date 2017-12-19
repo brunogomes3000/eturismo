@@ -12,8 +12,18 @@ Lista de destinos | {{ block.super }}
 ​<div class="row mt">
 
 <div class="col-lg-8">
-<p>Grato pela sua opinião! </p>
-<p>Voltar a página inicial
+  	<h1 id="Avaliacao">Avaliação</h1>
+  	<font face="tahoma" size="1"><h5>Nota</h5></font>
+ 	<p>{{form2.nota.label}}: {{form2.nota}}</p>
+  	<font face="tahoma" size="1"><h5>Comentário</h5></font>
+  	<p>{{form2.descricao.label}}: {{form2.descricao}} </p>
+    <div class="container">
+	<div class="row mt">
+    <form action="{% url 'sucesso' %}" method="post">
+    {% csrf_token %}
+   	<hidden value="{{distrito.id}}" id="id" name="id" />
+    <p><input type="submit" value="Enviar comentário" /></p>
+             
 <a href= "{% url 'index' %}">
 </p>
 <!--Criar link para a página iniciar -->

@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+Lista de destinos | {{ block.super }}
+{% endblock %}
+
+{% block conteudo%}
+
+<div class="container">
+​<div class="row mt">
+
+<div class="col-lg-8">
+<p>Grato pela sua opinião! </p>
+<p>Voltar a página inicial
+<a href= "{% url 'index' %}">
+</p>
+<!--Criar link para a página iniciar -->
+
+</div>
+</div>
+</div>
+
+
+ {% endblock %}

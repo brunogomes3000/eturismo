@@ -111,22 +111,23 @@
                 <h7 class="centered"> Comente aqui:</h7><br/>
                 <div class="container">
                 <div class="row mt">
-                <form action="" method="post">
+                <form action="{% url 'avaliacao' %}" method="post">
                 {% csrf_token %}
 
         <table background="hey.png" width="200" height="50">
             <td>
-                <form action="Avaliacao" method="post"> 
+              
         
                 <font face="tahoma" size="1"><h5>Nota</h5></font>
                 <input tupe="text" name="nota">
                 </br>
                 <br>
-                    <textarea name="Enviar comentários" id="comentarios" rows="10" cols="40" maxlength="100"></textarea>
+                <hidden value="{{distrito.id}}" id="id" name="id" />
+                    <textarea name="Enviar comentários" name="comentarios" id="comentarios" rows="10" cols="40" maxlength="100"></textarea>
                 <br>
                 <br>
                 <p><input type="submit" value="Enviar comentário" /></p>
-                </form>
+             
                 </td>
         </table>
          </br>

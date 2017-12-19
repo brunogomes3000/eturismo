@@ -16,10 +16,13 @@ def index(request):
 	return render(request, 'index.html')
 
 def informacoes(request):
-	id_distrito = request.GET.get("id")
-	form = UserCreationForm(request.POST or None)
-	
 
+	if request.method == 'POST':
+		if 'destinoget' in request.POST:
+
+
+			id_distrito = request.GET.get("id")
+	form = UserCreationForm(request.POST or None)
 	distrito = Distrito.objects.get(id=id_distrito)
 	passeios = Passeio.objects.filter(Distrito__id__in=id_distrito)
 	#municipios = Municipio.objects.get(Distrito__id__in=id_distrito)
@@ -79,11 +82,23 @@ def passeio_detalhes(request):
 	
 	context = {
 		'passeios': passeios
-
 	}
 
 	return render(request, 'passeio_detalhes.html', context)
-
-
 	
-	
+def avaliacoes(request):
+	id_distrito = request.POST.get("id")
+	nota = request.POST.get("nota")
+	comentarios = request.POST.get("comentarios")
+
+	#Consultar no banco o objeto distrito (linha 19 e linha 23)
+
+	avaliacao = Avaliacao()
+	avaliacao.nota = nota
+	avaliacao.descricao = comentarios
+	avaliacao.Distrito = distrito #objeto retornado
+
+	avaliacao.save()
+
+	return render(request, 'sucesso.html')
+

@@ -113,7 +113,7 @@ class Avaliacao(models.Model):
 	nota = models.CharField('Nota', max_length=2)
 	descricao = models.CharField('Descrição', max_length=300)
 	Distrito = models.ForeignKey(Distrito, on_delete=models.CASCADE)
-	
+
 	def __str__(self):
-		return self.nota
+		return self.descricao
 		

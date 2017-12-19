@@ -16,22 +16,42 @@ def index(request):
 
 def informacoes(request):
 	id_distrito = request.GET.get("id")
-	
-	distrito = Distrito.objects.get(id=id_distrito)
-	'''municipios = Municipio.objects.filter(Municipio__id__in=distrito.Municipio.id)'''
+	tipo_passeio = Tipo_Passeio.objects.all()
 
-	dicas = Dica.objects.filter(Distrito__id__in=id_distrito)
+	distrito = Distrito.objects.get(id=id_distrito)
 	passeios = Passeio.objects.filter(Distrito__id__in=id_distrito)
+	#municipios = Municipio.objects.get(Distrito__id__in=id_distrito)
+
+	#passeio = Passeio.objects.filter(Distrito__id__in=id_distrito)
+	dicas = Dica.objects.filter(Distrito__id__in=id_distrito)
 	promocoes = Promocao.objects.filter(Distrito__id__in=id_distrito)
 	avaliacoes = Avaliacao.objects.filter(Distrito__id__in=id_distrito)
+
+	if request.method == 'GET':
+		if 'descricaoget' in request.GET:
+				descricaoget=request.GET.get("descricaoget")
+		else:
+			descricaoget=""
+
+		if 'passeioget' in request.GET and request.GET.get("passeioget")!="": 
+			passeioget=request.GET.get("passeioget")
+		else:
+			passeioget=Tipo_Passeio.objects.values_list('id')
+			passeio = Tipo_Passeio.objects.filter(descricao__icontains=descricaoget, passeio__id__in=passeioget).distinct()
 	
+	else:
+		passeio = Tipo_Passeio.objects.all()
+		distrito = Distrito.objects.all()	
 	context = {
+
 		'distrito': distrito,
 		'dicas': dicas,
 		'passeios': passeios,
 		'promocoes': promocoes,
-		'avaliacoes': avaliacoes
+		'avaliacoes': avaliacoes,
+		'tipo_passeio' : tipo_passeio,	
 	}
+
 	return render(request, 'informacoes.html', context)
 
 def lista_destinos(request):
@@ -63,30 +83,11 @@ def lista_destinos(request):
 	return render(request, 'lista_destinos.html', context)
 
 def passeio_detalhes(request):
-	passeio = Passeio.objects.all()
-	empresa = Empresa.objects.all()
-	
-	if request.method == 'GET':
-	if 'nomeget' in request.GET: nomeget=request.GET.get("nomeget")
-		else:
-		nomeget=""
-
-	if 'passeioget' in request.GET and request.GET.get("passeioget")!="":passeioget=request.GET.get("passeioget")
-	
-		else:
-		publicoget=Publico.objects.values_list('id')
-	
-	if 'empresaget' in request.GET and request.GET.get("empresaget")!="": empresaget=request.GET.get("empresaget")
-		empresaget=request.GET.get("empresaget")
-		else:
-			empresaget=Empresa.objects.values_list('id')
-			passeio = Passeio.objects.filter(nome__icontains=nomeget, area__id__in=empresaget, passeio__id__in=passeioget).distinct()
-		else:
-		passeio = Passeio.objects.all()
+	id_passeio = request.GET.get("id")
+	passeio = Passeio.objects.get(id=id_passeio)
 
 	context = {
-		'passeio': passeio,
-		'empresa': empresa,
+		'passeio': passeio
 	}
 
 	return render(request, 'passeio_detalhes.html', context)

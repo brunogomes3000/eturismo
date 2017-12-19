@@ -41,10 +41,11 @@ def informacoes(request):
 			passeioget=request.GET.get("passeioget")
 		else:
 			passeioget=Tipo_Passeio.objects.values_list('id')
-			passeio = Tipo_Passeio.objects.filter(descricao__icontains=descricaoget, passeio__id__in=passeioget).distinct()
+		
+		passeios = Passeio.objects.filter(descricao__icontains=descricaoget, Tipo_Passeio__id__in=passeioget).distinct()
 	
-	else:
-		passeio = Tipo_Passeio.objects.all()
+	#else:
+		#passeio = Tipo_Passeio.objects.all()
 		
 	context = {
 

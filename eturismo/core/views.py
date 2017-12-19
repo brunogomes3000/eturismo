@@ -17,13 +17,18 @@ def index(request):
 
 def informacoes(request):
 
+
 	if request.method == 'POST':
 		if 'destinoget' in request.POST:
 
 
 			id_distrito = request.GET.get("id")
-	form = UserCreationForm(request.POST or None)
-	distrito = Distrito.objects.get(id=id_distrito)
+			form = UserCreationForm(request.POST or None)
+			distrito = Distrito.objects.get(id=id_distrito)
+	
+	
+	
+	
 	passeios = Passeio.objects.filter(Distrito__id__in=id_distrito)
 	#municipios = Municipio.objects.get(Distrito__id__in=id_distrito)
 
@@ -31,7 +36,23 @@ def informacoes(request):
 	dicas = Dica.objects.filter(Distrito__id__in=id_distrito)
 	promocoes = Promocao.objects.filter(Distrito__id__in=id_distrito)
 	avaliacoes = Avaliacao.objects.filter(Distrito__id__in=id_distrito)
+
+	if request.method == 'GET':
+		if 'descricaoget' in request.GET:
+				descricaoget=request.GET.get("descricaoget")
+		else:
+			descricaoget=""
+
+		if 'passeioget' in request.GET and request.GET.get("passeioget")!="": 
+			passeioget=request.GET.get("passeioget")
+		else:
+			passeioget=Tipo_Passeio.objects.values_list('id')
+		
+		passeios = Passeio.objects.filter(descricao__icontains=descricaoget, Tipo_Passeio__id__in=passeioget).distinct()
 	
+	#else:
+		#passeio = Tipo_Passeio.objects.all()
+		
 	context = {
 
 		'distrito': distrito,
@@ -39,10 +60,11 @@ def informacoes(request):
 		'passeios': passeios,
 		'promocoes': promocoes,
 		'avaliacoes': avaliacoes,
-		'form': form
-	
-		
+		'tipo_passeio' : tipo_passeio,
+		'form': form,	
 	}
+
+		
 	if request.method == 'POST':
 		if form.is_valid():
 			form.save()
@@ -78,11 +100,13 @@ def lista_destinos(request):
 
 def passeio_detalhes(request):
 	id_passeio = request.GET.get("id")
-	passeios = Passeio.objects.get(id=id_passeio)
-	
+
+	passeio = Passeio.objects.get(id=id_passeio)
+
 	context = {
-		'passeios': passeios
-	}
+		'passeio': passeio
+	
+		}
 
 	return render(request, 'passeio_detalhes.html', context)
 	

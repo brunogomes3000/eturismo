@@ -80,7 +80,7 @@ class Passeio(models.Model):
 		return self.descricao
 
 class Promocao(models.Model):
-	imagem_perfil= models.ImageField(upload_to='imagens/perfil', verbose_name='Imagem', default='imagens/perfil/noperfil.png', null=True, blank=True)
+	imagem_perfil= models.ImageField(upload_to='static/img', verbose_name='Imagem', default='/core/static/img/barra-do-cunhau.jpg', null=True, blank=True)
 	link = models.CharField("Link", max_length=100)
 	Empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
 	Distrito = models.ForeignKey(Distrito, on_delete=models.CASCADE)

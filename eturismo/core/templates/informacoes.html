@@ -71,10 +71,27 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <h1 id="lugares">Passeios</h1>
-
+                <hr/>
+                <form method="get" action="{% url 'informacoes' %}">
+                    <p>Filtros --
+                    Nome: <input type="text" name="descricaoget"/> |
+                    Tipo Passeio: <select name="passeioget"> ]
+                    <option value=""></option> 
+                    
+                    {% for tipos in tipo_passeio %}
+                    <option value="{{tipos.id}}">{{tipos.descricao}}</option>
+                    {% endfor %}
+                    </select> |
+                     <input type="hidden" name="id" value="{{distrito.id}}" />
+                    <input type="submit" value="buscar"></p>
+                   
+                    </form>
+                    <hr/>
+                
                 <ul>
 
                 {% for pas in passeios %}
+               
                 <li><p>{{pas.descricao}}</p>
                 <a href= "{% url 'passeio_detalhes' %}?id={{pas.id}}"> Acesse </a></li>
                 {% empty %}
@@ -94,7 +111,10 @@
 
                 <h1 id="promocoes" >Promoções</h1>
                 {% for promo in promocoes %}
-                <p>{{promo.descricao}}</p>
+                <img src=" {{promo.imagem_perfil.url}} " alt="">
+                <p></p>
+                <a href="http://www.potiguarturismo.com.br/" target="_blank"><p>{{promo.link}}</p> </a>
+                </div>
                 {% empty %}
                 <p>Nenhuma promoção cadastrada.</p>
                 {% endfor %}

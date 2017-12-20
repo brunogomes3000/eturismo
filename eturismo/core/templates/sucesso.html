@@ -13,10 +13,12 @@ Lista de destinos | {{ block.super }}
 
 <div class="col-lg-8">
   	<h1 id="Avaliacao">Avaliação</h1>
+
   	<font face="tahoma" size="1"><h5>Nota</h5></font>
  	<p>{{form2.nota.label}}: {{form2.nota}}</p>
   	<font face="tahoma" size="1"><h5>Comentário</h5></font>
   	<p>{{form2.descricao.label}}: {{form2.descricao}} </p>
+  	
     <div class="container">
 	<div class="row mt">
     <form action="{% url 'sucesso' %}" method="post">
